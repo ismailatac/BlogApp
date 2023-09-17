@@ -1,8 +1,11 @@
-﻿namespace Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Entities
 {
     public class Comment
     {
-        public int Id { get; set; }
+        [Key]
+        public int CommentId { get; set; }
         public string Username { get; set; }
         public string Title { get; set; }
         public string Content { get; set; }

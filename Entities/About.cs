@@ -1,8 +1,11 @@
-﻿namespace Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Entities
 {
     public class About
     {
-        public int Id { get; set; }
+        [Key]
+        public int AboutId { get; set; }
         public string Details1 { get; set; }
         public string Details2 { get; set; }
         public string Image1 { get; set; }

@@ -1,8 +1,11 @@
-﻿namespace Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Entities
 {
     public class Contact
     {
-        public int Id { get; set; }
+        [Key]
+        public int ContactId { get; set; }
         public string Username { get; set; }
         public string Mail { get; set; }
         public string Subject { get; set; }

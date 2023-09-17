@@ -1,8 +1,11 @@
-﻿namespace Entities
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Entities
 {
     public class Writer
     {
-        public int Id { get; set; }
+        [Key]
+        public int WriterId { get; set; }
         public string Name { get; set; }
         public string About { get; set; }
         public string Image { get; set; }
