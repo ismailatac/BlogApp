@@ -1,0 +1,25 @@
+﻿@using Entities
+@model List<Category>
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Kategori adı</th>
+        <th>Durumu</th>
+        <th>Sil</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.CategoryId</td>
+            <td>@item.Name</td>
+            <td>@item.Description</td>
+            <td>@item.Status</td>
+        </tr>
+    }
+</table>
+

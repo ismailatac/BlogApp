@@ -1,0 +1,15 @@
+﻿<div class="comment-top">
+	<h4>Bir yorum yapın</h4>
+	<h1>@ViewBag.id</h1>
+	<div class="comment-bottom">
+		<form method="post" action="/Comment/AddComment">
+			<input class="form-control" type="text" name="Username" placeholder="Name" required="">
+
+			<input class="form-control" type="text" name="Title" placeholder="Subject" required="">
+			<input type="hidden" name="BlogId" value=@ViewBag.id />
+
+			<textarea class="form-control" name="Content" placeholder="Message..." required=""></textarea>
+			<button type="submit" class="btn btn-primary submit">Submit</button>
+		</form>
+	</div>
+</div>

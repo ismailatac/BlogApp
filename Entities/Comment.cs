@@ -11,5 +11,7 @@ namespace Entities
         public string Content { get; set; }
         public DateTime Date { get; set; }
         public bool Status { get; set; }
+        public int BlogId { get; set; }
+        public Blog Blog { get; set; }
     }
 }
