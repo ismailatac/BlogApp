@@ -35,7 +35,7 @@ namespace BlogApp.Controllers
                 }
             }
 
-
+            return View();
         }
     }
 }

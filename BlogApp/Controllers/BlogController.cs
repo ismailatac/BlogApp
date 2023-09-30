@@ -18,6 +18,7 @@ namespace BlogApp.Controllers
         {
             ViewBag.i = id;
             var values = blogService.GetBlogsById(id);
+            ViewBag.WriterId = values[0].WriterId;
             return View(values);
         }
     }

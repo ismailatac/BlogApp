@@ -4,6 +4,7 @@ using DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20230926161624_mig_blog_writer_relation")]
+    partial class mig_blog_writer_relation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -196,26 +199,6 @@ namespace DataAccess.Migrations
                     b.HasKey("ContactId");
 
                     b.ToTable("Contacts");
-                });
-
-            modelBuilder.Entity("Entities.Newsletter", b =>
-                {
-                    b.Property<int>("NewsletterId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("NewsletterId"));
-
-                    b.Property<string>("Mail")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("MailStatus")
-                        .HasColumnType("bit");
-
-                    b.HasKey("NewsletterId");
-
-                    b.ToTable("Newsletters");
                 });
 
             modelBuilder.Entity("Entities.Writer", b =>

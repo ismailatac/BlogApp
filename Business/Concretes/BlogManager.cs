@@ -43,6 +43,11 @@ namespace Business.Concretes
            return _blogDal.GetListAll();
         }
 
+		public List<Blog> GetListByWriterId(int id)
+		{
+            return _blogDal.GetListAll(x => x.WriterId == id);
+		}
+
 		public List<Blog> GetListWithCategory()
 		{
            return _blogDal.GetListWithCategory();

@@ -16,6 +16,7 @@ namespace Business.Abstracts
         Blog GetById(int id);
         List<Blog> GetListWithCategory();
         List<Blog> GetBlogsById(int id);
+        List<Blog> GetListByWriterId(int id);
 
     }
 }
