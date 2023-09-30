@@ -1,7 +1,9 @@
 ﻿using DataAccess.Contexts;
 using Entities;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace BlogApp.Controllers
 {
@@ -14,21 +16,35 @@ namespace BlogApp.Controllers
 		}
 		[HttpPost]
 		[AllowAnonymous]
-		public IActionResult Index(Writer writer)
+		public async Task<IActionResult> Index(Writer writer)
 		{
 			Context context = new Context();
 			var dataValue = context.Writers.FirstOrDefault(x => x.Mail == writer.Mail &&
 			x.Password == writer.Password);
 			if (dataValue != null)
 			{
-				HttpContext.Session.SetString("username", writer.Mail);
+				var claims = new List<Claim>
+				{
+					new Claim(ClaimTypes.Name,writer.Mail)
+				};
+				var userIdentity = new ClaimsIdentity(claims, "Bearer");
+				ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
+				await HttpContext.SignInAsync(principal);
 				return RedirectToAction("Index", "Writer");
 			}
-			else
-			{
-				return View();
-			}
-			
+
 		}
 	}
 }
+//Context context = new Context();
+//var dataValue = context.Writers.FirstOrDefault(x => x.Mail == writer.Mail &&
+//x.Password == writer.Password);
+//if (dataValue != null)
+//{
+//	HttpContext.Session.SetString("username", writer.Mail);
+//	return RedirectToAction("Index", "Writer");
+//}
+//else
+//{
+//	return View();
+//}

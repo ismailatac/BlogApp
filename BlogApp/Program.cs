@@ -12,7 +12,7 @@ namespace BlogApp
 
 			// Add services to the container.
 			builder.Services.AddControllersWithViews();
-			builder.Services.AddSession();
+			
 
 			builder.Services.AddMvc(config =>
 			{
@@ -45,6 +45,7 @@ namespace BlogApp
 
 			app.UseStatusCodePagesWithReExecute("/ErrorPage/Error1", "?code={0}");
 
+			app.UseAuthentication();
 
 			app.UseHttpsRedirection();
 			app.UseStaticFiles();
