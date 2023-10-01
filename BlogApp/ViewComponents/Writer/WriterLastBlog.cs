@@ -2,7 +2,7 @@
 using DataAccess.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BlogApp.ViewComponents
+namespace BlogApp.ViewComponents.Writer
 {
     public class WriterLastBlog : ViewComponent
     {
