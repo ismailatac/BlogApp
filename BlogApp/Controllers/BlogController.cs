@@ -1,11 +1,11 @@
-﻿using Business.Abstracts;
-using Business.Concretes;
+﻿using Business.Concretes;
 using DataAccess.EntityFramework;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore.Storage;
 
 namespace BlogApp.Controllers
 {
+	[AllowAnonymous]
     public class BlogController : Controller
     {
         BlogManager blogService = new BlogManager(new EfBlogRepository());

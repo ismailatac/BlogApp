@@ -32,6 +32,7 @@ namespace BlogApp.Controllers
 				await HttpContext.SignInAsync(principal);
 				return RedirectToAction("Index", "Writer");
 			}
+			return RedirectToAction("Index", "Login");
 
 		}
 	}
