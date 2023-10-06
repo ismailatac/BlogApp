@@ -56,11 +56,18 @@ namespace Business.Concretes
 		public List<Blog> GetListWithCategory()
 		{
            return _blogDal.GetListWithCategory();
+            //not: eager-lazy loading 
 		}
 
-		public void Update(Blog blog)
+        public List<Blog> GetListWithCategoryByWriterId(int id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Update(Blog blog)
         {
             _blogDal.Update(blog);
         }
+        
     }
 }

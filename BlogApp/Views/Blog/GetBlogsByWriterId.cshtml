@@ -1,0 +1,32 @@
+﻿@using Entities
+@model List<Blog>
+@{
+    ViewData["Title"] = "GetBlogsByWriterId";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<h1>Yazarın Blogları</h1>
+<table class="table table-hover">
+    <tr>
+        <th>#</th>
+        <th>Blog Başlığı</th>
+        <th>Oluşturma Tarihi</th>
+        <th>Kategori</th>
+        <th>Durum</th>
+    </tr>
+    @foreach(var item in Model)
+    {
+        <tr>
+            <td>@item.BlogId</td>
+            <td>@item.Title</td>
+            <td>@item.CreateDate</td>
+            <td>@item.CategoryId</td>
+            <td>@item.Status</td>
+            <td><a href="#" class="btn btn-danger">Sil</a></td>
+            <td><a href="#" class="btn btn-warning">Düzenle</a></td>
+        </tr>
+    }
+    
+</table>
+<a href="/Blog/BlogAdd" class="btn btn-info">Yeni Blog Oluştur</a>
+

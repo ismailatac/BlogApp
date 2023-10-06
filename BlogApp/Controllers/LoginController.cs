@@ -30,7 +30,7 @@ namespace BlogApp.Controllers
 				var userIdentity = new ClaimsIdentity(claims, "Bearer");
 				ClaimsPrincipal principal = new ClaimsPrincipal(userIdentity);
 				await HttpContext.SignInAsync(principal);
-				return RedirectToAction("Index", "Writer");
+				return RedirectToAction("GetBlogsByWriterId", "Blog");
 			}
 			return RedirectToAction("Index", "Login");
 

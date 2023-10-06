@@ -1,0 +1,32 @@
+﻿@using Entities
+@model Blog
+@{
+    ViewData["Title"] = "BlogAdd";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<h1>Yeni Blog Girişi</h1>
+
+@using (Html.BeginForm("BlogAdd", "Blog", FormMethod.Post))
+{
+    @Html.Label("Blog Başlığı")
+    @Html.TextBoxFor(x => x.Title, new {@class = "form-control"})
+    @Html.ValidationMessageFor(x => x.Title)
+    <br />
+    @Html.Label("Blog Görseli")
+    @Html.TextBoxFor(x => x.Image, new {@class = "form-control"})
+    @Html.ValidationMessageFor(x => x.Image)
+    <br />
+    @Html.Label("Blog Küçük Görseli")
+    @Html.TextBoxFor(x => x.ThumbnailImage, new {@class = "form-control"})
+    @Html.ValidationMessageFor(x => x.ThumbnailImage)
+    <br />
+    @Html.Label("Blog Kategorisi")
+    @Html.DropDownListFor(x => x.CategoryId,(List<SelectListItem>)ViewBag.CategoryValues,new{@class="form-control"})
+    <br />
+    @Html.Label("Blog İçeriği")
+    @Html.TextAreaFor(x => x.Content,10,3, new {@class = "form-control"})
+    @Html.ValidationMessageFor(x => x.Content)
+    <br />
+    <button type="submit" class="btn btn-info">Yazıyı kaydet</button>
+}

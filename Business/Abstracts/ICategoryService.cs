@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Business.Abstracts
 {
-    public interface ICategoryService
+    public interface ICategoryService : IGenericService<Category>
     {
-        void Add(Category category);
-        void Delete(Category category);
-        void Update(Category category);
-        List<Category> GetListAll();
-        Category GetById(int id);
+        //void Add(Category category);
+        //void Delete(Category category);
+        //void Update(Category category);
+        //List<Category> GetListAll();
+        //Category GetById(int id);
 
     }
 }

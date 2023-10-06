@@ -1,7 +1,12 @@
 ﻿using Business.Concretes;
+using Business.ValidationRules;
 using DataAccess.EntityFramework;
+using Entities;
+using FluentValidation.Results;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Newtonsoft.Json.Linq;
 
 namespace BlogApp.Controllers
 {
@@ -20,6 +25,49 @@ namespace BlogApp.Controllers
             var values = blogService.GetBlogsById(id);
             ViewBag.WriterId = values[0].WriterId;
             return View(values);
+        }
+        public IActionResult GetBlogsByWriterId(int id)
+        {
+            var values = blogService.GetListByWriterId(1);
+            return View(values);
+        }
+        [HttpGet]
+        public IActionResult BlogAdd()
+        {
+            CategoryManager cm = new CategoryManager(new EfCategoryRepository());
+            List<SelectListItem> CategoryValues = (from x in cm.GetListAll()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.Name,
+                                                       Value = x.CategoryId.ToString()
+                                                   }).ToList();
+            ViewBag.CategoryValues = CategoryValues; 
+            return View();
+
+
+
+        }
+        [HttpPost]
+        public IActionResult BlogAdd(Blog blog)
+        {
+            BlogValidator blogValidator = new BlogValidator();
+            ValidationResult validationResult = blogValidator.Validate(blog);
+            if (validationResult.IsValid)
+            {
+                blog.Status = true;
+                blog.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
+                blog.WriterId = 1;
+                blogService.Add(blog);
+                return RedirectToAction("GetBlogsByWriterId", "Blog");
+            }
+            else
+            {
+                foreach (var item in validationResult.Errors)
+                {
+                    ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
+                }
+            }
+            return View();
         }
     }
 }

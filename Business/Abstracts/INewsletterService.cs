@@ -7,13 +7,13 @@ using System.Threading.Tasks;
 
 namespace Business.Abstracts
 {
-    public interface INewsletterService
+    public interface INewsletterService : IGenericService<Newsletter>
     {
-        void Add(Newsletter newsletter);
-        void Delete(Newsletter newsletter);
-        void Update(Newsletter newsletter);
-        List<Newsletter> GetListAll();
-        Newsletter GetById(int id);
+        //void Add(Newsletter newsletter);
+        //void Delete(Newsletter newsletter);
+        //void Update(Newsletter newsletter);
+        //List<Newsletter> GetListAll();
+        //Newsletter GetById(int id);
 
     }
 }
