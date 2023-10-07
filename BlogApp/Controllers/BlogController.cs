@@ -10,7 +10,7 @@ using Newtonsoft.Json.Linq;
 
 namespace BlogApp.Controllers
 {
-	[AllowAnonymous]
+    [AllowAnonymous]
     public class BlogController : Controller
     {
         BlogManager blogService = new BlogManager(new EfBlogRepository());
@@ -19,7 +19,7 @@ namespace BlogApp.Controllers
             var values = blogService.GetListWithCategory();
             return View(values);
         }
-        
+
         public IActionResult BlogReadAll(int id)
         {
             ViewBag.i = id;
@@ -42,7 +42,7 @@ namespace BlogApp.Controllers
                                                        Text = x.Name,
                                                        Value = x.CategoryId.ToString()
                                                    }).ToList();
-            ViewBag.CategoryValues = CategoryValues; 
+            ViewBag.CategoryValues = CategoryValues;
             return View();
 
 
@@ -78,13 +78,24 @@ namespace BlogApp.Controllers
             return RedirectToAction("GetBlogsByWriterId", "Blog");
         }
         [HttpGet]
-        public IActionResult EditBlog()
-        {
-            return View();
-        }
-        [HttpPost]
         public IActionResult EditBlog(int id)
         {
+            CategoryManager cm = new CategoryManager(new EfCategoryRepository());
+            List<SelectListItem> CategoryValues = (from x in cm.GetListAll()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.Name,
+                                                       Value = x.CategoryId.ToString()
+                                                   }).ToList();
+            ViewBag.CategoryValues = CategoryValues;
+            var blogValue = blogService.GetById(id);
+            return View(blogValue);
+        }
+        [HttpPost]
+        public IActionResult EditBlog(Blog blog)
+        {
+
+            blogService.Update(blog);
             return RedirectToAction("GetBlogsByWriterId", "Blog");
         }
     }
