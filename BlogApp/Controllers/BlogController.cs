@@ -77,5 +77,15 @@ namespace BlogApp.Controllers
             blogService.Delete(blogValue);
             return RedirectToAction("GetBlogsByWriterId", "Blog");
         }
+        [HttpGet]
+        public IActionResult EditBlog()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult EditBlog(int id)
+        {
+            return RedirectToAction("GetBlogsByWriterId", "Blog");
+        }
     }
 }

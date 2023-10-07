@@ -4,8 +4,13 @@
     ViewData["Title"] = "GetBlogsByWriterId";
     Layout = "~/Views/Shared/WriterLayout.cshtml";
 }
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 <body>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    
     <h1>Yazarın Blogları</h1>
     <table class="table table-hover">
         <tr>
@@ -29,7 +34,7 @@
                 </td>
                 <td>@item.Category.Name</td>
                 <td>@item.Status</td>
-                <td><a id="btn88" class="btn btn-danger">Sil</a></td>
+                <td><a  class="btn btn-danger">Sil</a></td>
                 <td><a href="#" class="btn btn-warning">Düzenle</a></td>
             </tr>
         }
@@ -37,9 +42,9 @@
     </table>
     <a href="/Blog/BlogAdd" class="btn btn-info">Yeni Blog Oluştur</a>
     <script>
-        $('#btn88').click(function ()
-        {
-            alert("aaaa");
+        
+        $('.btn-danger').click(function () {
+            
             Swal.fire({
                 title: 'Emin misin?',
                 text: "Silmek istediğinize emin misiniz?",
@@ -50,7 +55,8 @@
                 confirmButtonText: 'Sil'
             }).then((result) => {
                 if (result.isConfirmed) {
-                    window.location.href = "/Blog/BlogDelete" + id;
+                    alert("aaa");
+                    window.location.href = "/Blog/BlogDelete/" + @ViewBag.BlogId;
                     Swal.fire(
                         'Başarılı!',
                         'Blog silindi',
