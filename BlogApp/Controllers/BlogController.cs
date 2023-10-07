@@ -19,6 +19,7 @@ namespace BlogApp.Controllers
             var values = blogService.GetListWithCategory();
             return View(values);
         }
+        
         public IActionResult BlogReadAll(int id)
         {
             ViewBag.i = id;
@@ -28,7 +29,7 @@ namespace BlogApp.Controllers
         }
         public IActionResult GetBlogsByWriterId(int id)
         {
-            var values = blogService.GetListByWriterId(1);
+            var values = blogService.GetListWithCategoryByWriterId(1);
             return View(values);
         }
         [HttpGet]
@@ -68,6 +69,13 @@ namespace BlogApp.Controllers
                 }
             }
             return View();
+        }
+        //[HttpDelete]
+        public IActionResult BlogDelete(int id)
+        {
+            var blogValue = blogService.GetById(id);
+            blogService.Delete(blogValue);
+            return RedirectToAction("GetBlogsByWriterId", "Blog");
         }
     }
 }

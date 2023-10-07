@@ -61,7 +61,7 @@ namespace Business.Concretes
 
         public List<Blog> GetListWithCategoryByWriterId(int id)
         {
-            throw new NotImplementedException();
+            return _blogDal.GetListWithCategoryByWriterId(id);
         }
 
         public void Update(Blog blog)

@@ -6,6 +6,7 @@
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="~/lib/jquery/dist/jquery.min.js"></script>
 <script src="~/lib/jquery/dist/jquery.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <!--
 	Author: W3layouts
 	Author URL: http://w3layouts.com
@@ -67,8 +68,26 @@
 		</div>
 	</section>
 	<script>
-		$('#btn1').click(function (){
-			swal("dsdfsghjklkjhgfdsfghjklşkjhgsdafhjkl.şgfdsfghjklşkjhgdsfghjklşikjhgfdsfghjkl.şlkjhgfdsfghjklşkjhgdsaglşlkjgfdsfpoıyss");
+		$('#btn1').click(function ()
+		{
+			Swal.fire({
+				title: '<strong><u>Hizmet şartları</u></strong>',
+				icon: 'info',
+				html:
+					'Bütün şartları <b>okudum</b>, ' +
+					'kabul ediyorum '
+					,
+				showCloseButton: true,
+				showCancelButton: true,
+				focusConfirm: false,
+				confirmButtonText:
+					'Evet',
+				confirmButtonAriaLabel: 'Thumbs up, great!',
+				cancelButtonText:
+					'Hayır',
+				cancelButtonAriaLabel: 'Thumbs down'
+			})
+			
 		});
 	</script>
 	</body>
