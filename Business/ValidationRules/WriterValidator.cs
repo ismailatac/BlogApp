@@ -18,7 +18,6 @@ namespace Business.ValidationRules
             RuleFor(x => x.Name).MinimumLength(2).WithMessage("En az iki karakter girişi yapın!");
             RuleFor(x => x.Name).MaximumLength(50).WithMessage("En fazla elli karakter girişi yapın!");
 
-
         }
     }
 }

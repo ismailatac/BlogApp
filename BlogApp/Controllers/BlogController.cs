@@ -70,13 +70,17 @@ namespace BlogApp.Controllers
             }
             return View();
         }
-        //[HttpDelete]
+
+
+        [HttpDelete]
         public IActionResult BlogDelete(int id)
         {
             var blogValue = blogService.GetById(id);
             blogService.Delete(blogValue);
             return RedirectToAction("GetBlogsByWriterId", "Blog");
         }
+
+
         [HttpGet]
         public IActionResult EditBlog(int id)
         {

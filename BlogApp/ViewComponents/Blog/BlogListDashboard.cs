@@ -2,12 +2,12 @@
 using DataAccess.EntityFramework;
 using Microsoft.AspNetCore.Mvc;
 
-namespace BlogApp.Controllers
+namespace BlogApp.ViewComponents.Blog
 {
-    public class DashboardController : Controller
+    public class BlogListDashboard : ViewComponent
     {
         BlogManager bm = new BlogManager(new EfBlogRepository());
-        public IActionResult Index()
+        public IViewComponentResult Invoke()
         {
             var values = bm.GetListWithCategory();
             return View(values);

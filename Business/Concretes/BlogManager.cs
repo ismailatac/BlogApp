@@ -40,7 +40,7 @@ namespace Business.Concretes
 
 		public List<Blog> GetLastThreeBlog()
 		{
-            return _blogDal.GetListAll().Take(3).ToList();
+            return _blogDal.GetListAll().OrderByDescending(x => x.BlogId).Take(3).ToList();
 		}
 
 		public List<Blog> GetListAll()
