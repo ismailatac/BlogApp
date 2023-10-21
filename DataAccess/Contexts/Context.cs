@@ -22,6 +22,7 @@ namespace DataAccess.Contexts
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Writer> Writers { get; set; }
         public DbSet<Newsletter> Newsletters { get; set; }
+        public DbSet<BlogRayting> BlogRaytings { get; set; }
 
     }
 }
