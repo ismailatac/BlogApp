@@ -1,4 +1,5 @@
-﻿using Business.Concretes;
+﻿using BlogApp.Models;
+using Business.Concretes;
 using Business.ValidationRules;
 using DataAccess.EntityFramework;
 using Entities;
@@ -35,7 +36,7 @@ namespace BlogApp.Controllers
         public IActionResult WriterEditProfile(Writer writer)
         {
             WriterValidator validator = new WriterValidator();
-            ValidationResult result = validator.Validate(p);
+            ValidationResult result = validator.Validate(writer);
             if (result.IsValid)
             {
                 wm.Update(writer);
@@ -44,13 +45,42 @@ namespace BlogApp.Controllers
             }
             else
             {
-                foreach(var item in result.Errors)
+                foreach (var item in result.Errors)
                 {
                     ModelState.AddModelError(item.PropertyName, item.ErrorMessage);
                 }
             }
             return View();
         }
+        [HttpGet]
+        public IActionResult WriterAdd()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult WriterAdd(AddProfileImage writer)
+        {
+            Writer w = new Writer();
+            if (writer.Image != null)
+            {
+                var extension = Path.GetExtension(writer.Image.FileName);
+                var newImageName = Guid.NewGuid() + extension;
+                var location = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/WriterImageFiles/", newImageName);
+                var stream = new FileStream(location, FileMode.Create);
+                writer.Image.CopyTo(stream);
+                w.Image = newImageName;
+            }
+            w.Mail = writer.Mail;
+            w.Name = writer.Name;
+            w.Password = writer.Password;
+            w.Status = true;
+            w.About = writer.About;
+
+            wm.Add(w);
+            return RedirectToAction("Index", "Dashboard");
+        }
+
+
 
 
     }
