@@ -35,7 +35,7 @@ namespace Business.Concretes
 
         public void Update(Notification notification)
         {
-            _notificationDal.Update(about);
+            _notificationDal.Update(notification);
         }
     }
 }
