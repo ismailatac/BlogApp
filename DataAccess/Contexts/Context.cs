@@ -14,6 +14,20 @@ namespace DataAccess.Contexts
         {
             optionsBuilder.UseSqlServer("server=ISMAILATAC\\SQLEXPRESS;database=BlogAppDb;integrated security=true;TrustServerCertificate=True");
         }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Message>()
+                .HasOne(x => x.Sender)
+                .WithMany(y => y.Senders)
+                .HasForeignKey(z => z.SenderId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+
+            modelBuilder.Entity<Message>()
+                .HasOne(x => x.Receiver)
+                .WithMany(y => y.Receivers)
+                .HasForeignKey(z => z.ReceiverId)
+                .OnDelete(DeleteBehavior.ClientSetNull);
+        }
 
         public DbSet<About> Abouts { get; set; }
         public DbSet<Blog> Blogs { get; set; }
@@ -24,6 +38,7 @@ namespace DataAccess.Contexts
         public DbSet<Newsletter> Newsletters { get; set; }
         public DbSet<BlogRayting> BlogRaytings { get; set; }
         public DbSet<Notification> Notifications { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
     }
 }

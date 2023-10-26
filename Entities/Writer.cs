@@ -13,5 +13,7 @@ namespace Entities
         public string Password { get; set; }
         public bool Status { get; set; }
         public List<Blog> Blogs { get; set; }
+        public List<Message> Senders { get; set; }
+        public List<Message> Receivers { get; set; }
     }
 }

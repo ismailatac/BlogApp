@@ -4,6 +4,7 @@ using DataAccess.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataAccess.Migrations
 {
     [DbContext(typeof(Context))]
-    partial class ContextModelSnapshot : ModelSnapshot
+    [Migration("20231025093558_add_message_table")]
+    partial class add_message_table
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -238,11 +241,13 @@ namespace DataAccess.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("ReceiverId")
-                        .HasColumnType("int");
+                    b.Property<string>("Receiver")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SenderId")
-                        .HasColumnType("int");
+                    b.Property<string>("Sender")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Status")
                         .IsRequired()
@@ -253,10 +258,6 @@ namespace DataAccess.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("MessageId");
-
-                    b.HasIndex("ReceiverId");
-
-                    b.HasIndex("SenderId");
 
                     b.ToTable("Messages");
                 });
@@ -383,23 +384,6 @@ namespace DataAccess.Migrations
                     b.Navigation("Blog");
                 });
 
-            modelBuilder.Entity("Entities.Message", b =>
-                {
-                    b.HasOne("Entities.Writer", "Receiver")
-                        .WithMany("Receivers")
-                        .HasForeignKey("ReceiverId")
-                        .IsRequired();
-
-                    b.HasOne("Entities.Writer", "Sender")
-                        .WithMany("Senders")
-                        .HasForeignKey("SenderId")
-                        .IsRequired();
-
-                    b.Navigation("Receiver");
-
-                    b.Navigation("Sender");
-                });
-
             modelBuilder.Entity("Entities.Blog", b =>
                 {
                     b.Navigation("Comments");
@@ -413,10 +397,6 @@ namespace DataAccess.Migrations
             modelBuilder.Entity("Entities.Writer", b =>
                 {
                     b.Navigation("Blogs");
-
-                    b.Navigation("Receivers");
-
-                    b.Navigation("Senders");
                 });
 #pragma warning restore 612, 618
         }
