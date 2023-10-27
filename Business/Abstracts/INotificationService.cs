@@ -9,7 +9,7 @@ namespace Business.Abstracts
 {
     public interface INotificationService : IGenericService<Notification>
     {
-        
+        List<Notification> GetListAllByWriterId(int id);
 
     }
 }

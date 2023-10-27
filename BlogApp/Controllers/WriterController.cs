@@ -1,6 +1,7 @@
 ﻿using BlogApp.Models;
 using Business.Concretes;
 using Business.ValidationRules;
+using DataAccess.Contexts;
 using DataAccess.EntityFramework;
 using Entities;
 using FluentValidation.Results;
@@ -29,7 +30,10 @@ namespace BlogApp.Controllers
         [HttpGet]
         public IActionResult WriterEditProfile()
         {
-            var value = wm.GetById(1);
+            var context = new Context();
+            var usermail = User.Identity.Name;
+            var writerId = context.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
+            var value = wm.GetById(writerId);
             return View(value);
         }
         [HttpPost]

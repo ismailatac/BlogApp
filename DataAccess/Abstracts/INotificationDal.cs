@@ -9,5 +9,6 @@ namespace DataAccess.Abstracts
 {
     public interface INotificationDal : IGenericDal<Notification>
     {
+        List<Notification> GetListAllByWriterId(int id);
     }
 }

@@ -17,5 +17,7 @@ namespace Entities
         public DateTime Date { get; set; }
         public string Color { get; set; }
         public string Status { get; set; }
+        public Writer Writer { get; set; }
+        public int WriterId { get; set; }
     }
 }

@@ -15,5 +15,6 @@ namespace Entities
         public List<Blog> Blogs { get; set; }
         public List<Message> Senders { get; set; }
         public List<Message> Receivers { get; set; }
+        public List<Notification> Notifications { get; set; }
     }
 }

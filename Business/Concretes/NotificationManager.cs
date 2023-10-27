@@ -33,6 +33,11 @@ namespace Business.Concretes
            return _notificationDal.GetListAll();
         }
 
+        public List<Notification> GetListAllByWriterId(int id)
+        {
+            return _notificationDal.GetListAllByWriterId(id);
+        }
+
         public void Update(Notification notification)
         {
             _notificationDal.Update(notification);

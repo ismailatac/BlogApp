@@ -1,5 +1,6 @@
 ﻿using Business.Concretes;
 using Business.ValidationRules;
+using DataAccess.Contexts;
 using DataAccess.EntityFramework;
 using Entities;
 using FluentValidation.Results;
@@ -29,7 +30,10 @@ namespace BlogApp.Controllers
         }
         public IActionResult GetBlogsByWriterId(int id)
         {
-            var values = blogService.GetListWithCategoryByWriterId(1);
+            var context = new Context();
+            var usermail = User.Identity.Name;
+            var writerId = context.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
+            var values = blogService.GetListWithCategoryByWriterId(writerId);
             return View(values);
         }
         [HttpGet]
@@ -57,7 +61,10 @@ namespace BlogApp.Controllers
             {
                 blog.Status = true;
                 blog.CreateDate = DateTime.Parse(DateTime.Now.ToShortDateString());
-                blog.WriterId = 1;
+                var context = new Context();
+                var usermail = User.Identity.Name;
+                var writerId = context.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
+                blog.WriterId = writerId;
                 blogService.Add(blog);
                 return RedirectToAction("GetBlogsByWriterId", "Blog");
             }
