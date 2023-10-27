@@ -42,5 +42,10 @@ namespace Business.Concretes
             return _messageDal.GetInboxListByWriterId(receiverId);
 
         }
+
+        public Message GetByIdWithSender(int messageId)
+        {
+            return _messageDal.GetByIdWithSender(messageId);
+        }
     }
 }

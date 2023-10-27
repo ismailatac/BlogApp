@@ -13,6 +13,15 @@ namespace DataAccess.EntityFramework
 {
     public class EfMessageRepository : GenericRepository<Message>, IMessageDal
     {
+        public Message GetByIdWithSender(int messageId)
+        {
+            using(var c = new Context())
+            {
+                return c.Messages.Include(x => x.Sender).Where(y => y.MessageId == messageId).FirstOrDefault();
+            }
+            
+        }
+
         public List<Message> GetInboxListByWriterId(int receiverId)
         {
             using (var c = new Context())

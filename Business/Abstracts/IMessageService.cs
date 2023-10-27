@@ -10,6 +10,6 @@ namespace Business.Abstracts
     public interface IMessageService : IGenericService<Message>
     {
         List<Message> GetInboxListByWriterId(int receiverId);
-
+        Message GetByIdWithSender(int messageId);
     }
 }

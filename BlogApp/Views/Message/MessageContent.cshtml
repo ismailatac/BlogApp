@@ -1,0 +1,21 @@
+﻿@model Entities.Message
+@{
+    ViewData["Title"] = "MessageContent";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<h1>Mesaj Detay Sayfası</h1>
+<br />
+@Html.Label("Mesaj ID")
+@Html.TextBoxFor(x => Model.MessageId,new{@class="form-control"})
+<br />
+@Html.Label("Mesaj Başlığı")
+@Html.TextBoxFor(x => Model.Subject,new{@class="form-control"})
+<br />
+@Html.Label("Mesaj İçeriği")
+@Html.TextBoxFor(x => Model.Details,new{@class="form-control"})
+<br />
+
+
+<a href="/Message/Inbox" class="btn btn-warning">Mesajlara Geri Dön</a>
+

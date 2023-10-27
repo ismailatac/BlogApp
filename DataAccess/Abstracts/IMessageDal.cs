@@ -11,5 +11,6 @@ namespace DataAccess.Abstracts
     public interface IMessageDal : IGenericDal<Message>
     {
         List<Message> GetInboxListByWriterId(int receiverId);
+        Message GetByIdWithSender(int messageId);
     }
 }

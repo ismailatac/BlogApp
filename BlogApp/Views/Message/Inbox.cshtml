@@ -1,0 +1,32 @@
+﻿@using Entities
+@model List<Message>
+@{
+    ViewData["Title"] = "Inbox";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<h1>Inbox</h1>
+
+
+<table class="table table-bordered">
+    <tr>
+        <th>#</th>
+        <th>Gönderen</th>
+        <th>Konu</th>
+        <th>Tarih</th>
+        <th>Detaya git</th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.MessageId</td>
+            <td>@item.Sender.Name</td>
+            <td>@item.Subject</td>
+            <td>@item.Date.ToShortDateString()</td>
+            <td><a href="/Message/MessageContent/@item.MessageId" class="btn btn-warning">Mesajı Aç</a></td>
+        </tr>
+    }
+    
+</table>
+<a href="/Message/NewMessage" class="btn btn-warning">Yeni Mesaj Oluştur</a>
+
