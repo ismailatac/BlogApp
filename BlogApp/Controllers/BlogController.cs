@@ -28,7 +28,7 @@ namespace BlogApp.Controllers
             ViewBag.WriterId = values[0].WriterId;
             return View(values);
         }
-        public IActionResult GetBlogsByWriterId(int id)
+        public IActionResult GetBlogsByWriterId()
         {
             var context = new Context();
             var usermail = User.Identity.Name;
@@ -105,7 +105,10 @@ namespace BlogApp.Controllers
         [HttpPost]
         public IActionResult EditBlog(Blog blog)
         {
-
+            var context = new Context();
+            var usermail = User.Identity.Name;
+            var writerId = context.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
+            blog.WriterId = writerId;
             blogService.Update(blog);
             return RedirectToAction("GetBlogsByWriterId", "Blog");
         }

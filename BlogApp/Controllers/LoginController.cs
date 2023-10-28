@@ -37,15 +37,5 @@ namespace BlogApp.Controllers
 		}
 	}
 }
-//Context context = new Context();
-//var dataValue = context.Writers.FirstOrDefault(x => x.Mail == writer.Mail &&
-//x.Password == writer.Password);
-//if (dataValue != null)
-//{
-//	HttpContext.Session.SetString("username", writer.Mail);
-//	return RedirectToAction("Index", "Writer");
-//}
-//else
-//{
-//	return View();
-//}
+
+// HttpContext.Session.SetString("username", writer.Mail);
