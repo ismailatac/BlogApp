@@ -1,0 +1,23 @@
+﻿@using Entities
+@model Category
+@{
+    ViewData["Title"] = "AddCategory";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h1>Yeni Kategori Girişi</h1>
+
+
+<form asp-area="Admin" asp-controller="AdminCategory" asp-action="AddCategory" method="post">
+
+    @Html.Label("Kategori Adı")
+    @Html.TextBoxFor(x => x.Name, new {@class = "form-control"})
+    @Html.ValidationMessageFor(x => x.Name)
+    <br />
+    @Html.Label("Kategori Açıklaması")
+    @Html.TextAreaFor(x => x.Description,4,3, new {@class = "form-control"})
+    @Html.ValidationMessageFor(x => x.Description)
+    <br />
+    <button type="submit" class="btn btn-info">Kategoriyi kaydet</button>
+</form>
+
