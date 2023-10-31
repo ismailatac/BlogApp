@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Business.Abstracts
+namespace DataAccess.Abstracts
 {
-    public interface IAboutService : IGenericService<About>
+    public interface IAdminDal : IGenericDal<Admin>
     {
     }
 }

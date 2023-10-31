@@ -7,7 +7,9 @@ using System.Threading.Tasks;
 
 namespace Business.Abstracts
 {
-    public interface IAboutService : IGenericService<About>
+    public interface IAdminService : IGenericService<Admin>
     {
+        
+
     }
 }
