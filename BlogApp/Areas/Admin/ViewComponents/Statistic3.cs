@@ -6,15 +6,14 @@ namespace BlogApp.Areas.Admin.ViewComponents
 {
     public class Statistic3 :ViewComponent
     {
-        BlogManager bm = new BlogManager(new EfBlogRepository());
-        ContactManager cm = new ContactManager(new EfContactRepository());
-        CommentManager com = new CommentManager(new EfCommentRepository());
+        AdminManager adm = new AdminManager(new EfAdminRepository());
         public IViewComponentResult Invoke()
         {
-            ViewBag.countBlog = bm.GetListAll().Count();
-            ViewBag.countContact = cm.GetListAll().Count();
-            ViewBag.countComment = com.GetListAll().Count();
-            
+            ViewBag.adminName = adm.GetById(2).Name;
+            ViewBag.adminImageURL = adm.GetById(2).ImageURL;
+            ViewBag.adminShortDescription = adm.GetById(2).ShortDescription;
+
+
             return View();
         }
     }

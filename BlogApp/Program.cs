@@ -66,6 +66,10 @@ namespace BlogApp
                   name: "areas",
                   pattern: "{area:exists}/{controller=AdminCategory}/{action=Index}/{id?}"
                 );
+                endpoints.MapControllerRoute(
+                  name: "areas",
+                  pattern: "{area:exists}/{controller=Widget}/{action=Index}/{id?}"
+                );
             });
 
             app.Run();
