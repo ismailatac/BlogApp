@@ -1,6 +1,7 @@
 ﻿using BlogApp.Areas.Admin.Models;
 using Business.Concretes;
 using DataAccess.EntityFramework;
+using Entities;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 
@@ -30,6 +31,15 @@ namespace BlogApp.Areas.Admin.Controllers
             var jsonWriters = JsonConvert.SerializeObject(writerModelList);
             return Json(jsonWriters);
         }
+        public IActionResult WriterGetById(int writerId)
+        {
+             var writer = wm.GetById(writerId);
+            var jsonWriter = JsonConvert.SerializeObject(writer);
+
+            return Json(jsonWriter);
+
+        }
+
 
     }
 }

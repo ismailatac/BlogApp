@@ -3,15 +3,17 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogApp", "BlogApp\BlogApp.csproj", "{48C0529F-71D7-4023-A2B4-55D6AE3AAE17}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlogApp", "BlogApp\BlogApp.csproj", "{48C0529F-71D7-4023-A2B4-55D6AE3AAE17}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Business", "Business\Business.csproj", "{45BB4255-2425-4D65-9A39-B7D8100559D9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Business", "Business\Business.csproj", "{45BB4255-2425-4D65-9A39-B7D8100559D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entities", "Entities\Entities.csproj", "{2234CD6C-86E0-4031-A0A4-940C3EBB0615}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{2234CD6C-86E0-4031-A0A4-940C3EBB0615}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccess", "DataAccess\DataAccess.csproj", "{C7C5CF17-2B1A-483C-AF46-B424A71E9E8B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DataAccess", "DataAccess\DataAccess.csproj", "{C7C5CF17-2B1A-483C-AF46-B424A71E9E8B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Core", "Core\Core.csproj", "{F70B8489-684B-4CD9-9C42-09442A829FA2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{F70B8489-684B-4CD9-9C42-09442A829FA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlogAppWebAPI", "BlogAppWebAPI\BlogAppWebAPI.csproj", "{B2DFD87A-1ABA-41B3-A6DB-E01C74926883}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{F70B8489-684B-4CD9-9C42-09442A829FA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F70B8489-684B-4CD9-9C42-09442A829FA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F70B8489-684B-4CD9-9C42-09442A829FA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2DFD87A-1ABA-41B3-A6DB-E01C74926883}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2DFD87A-1ABA-41B3-A6DB-E01C74926883}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2DFD87A-1ABA-41B3-A6DB-E01C74926883}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2DFD87A-1ABA-41B3-A6DB-E01C74926883}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -6,10 +6,12 @@
 <h1>Yazar Ajax Listesi</h1>
 <br />
 <button type="button" id="btngetlist" class="btn btn-outline-primary">Yazar Listesini Getir</button>
+<button type="button" id="btnget" class="btn btn-outline-primary">Yazarı Getir</button>
 <br />
 <br />
-<div id="writerList">
+<div id="writers">
 </div>
+<input type="text" id="writerId" placeholder="Yazar için id değeri giriniz..." />
 @section scripts{
     <script>
         $("#btngetlist").click(function () {
@@ -19,15 +21,63 @@
                 type: "GET",
                 url: "/Admin/Writer/WriterList/",
                 success: function (param) {
-                     let w = jQuery.parseJSON(param);
-                     let tablehtml = "<table class table table-bordered> <tr> <th> Yazar Id </th> <th> Yazar Adı </th></tr>";
-                     $.each(w,(index,value) => {
-                         tablehtml += `<tr><td>${value.WriterId}</td><td>${value.Name}</td></tr>`
-                     });
-                     tablehtml += "</table>";
-                     $("#writerList").html(tablehtml);
+                    let w = jQuery.parseJSON(param);
+                    let tablehtml = `<table class="table table-bordered"> <tr> <th> Yazar Id </th> <th> Yazar Adı </th></tr>`;
+                    $.each(w, (index, value) => {
+                        tablehtml += `<tr><td>${value.WriterId}</td><td>${value.Name}</td></tr>`
+                    });
+                    tablehtml += "</table>";
+                    $("#writers").html(tablehtml);
                 }
             });
         });
+
+        $("#btnget").click(x => {
+            $.ajax({
+                contentType: "application/json",
+                dataType: "json",
+                type: "GET",
+                url: "/Admin/Writer/WriterGetById/",
+                data: { writerId: $("#writerId").val() },
+                success: function (param) {
+                    let w = jQuery.parseJSON(param);
+                    console.log(w);
+                    let tablehtml = "<table class table table-bordered> <tr> <th> Yazar Id </th> <th> Yazar Adı </th></tr>";
+                    tablehtml += `<tr><td>${w.WriterId}</td><td>${w.Name}</td></tr>`;
+                    tablehtml += "</table>";
+                    $("#writers").html(tablehtml);
+                }
+            });
+        });
+        //$("#btnadd").click(x => {
+        //    let writer = {
+        //        Id:$("txtwriterid").val(),
+        //        Name:$("txtwritername").val()
+        //    }
+        //    $.ajax({
+        //        contentType: "application/json",
+        //        dataType: "json",
+        //        type: "POST",
+        //        url: "/Admin/Writer/WriterAdd/",
+        //        data: writer,
+        //        success: function (param) {
+        //            let w = jQuery.parseJSON(param);
+        //            alert("Yazar ekleme işlemi başarıyla gerçekleştirildi.")
+        //        }
+        //    });
+        //});
+
+        //$("#btndelete").click(x => {
+        //    $.ajax({
+        //        dataType: "json",
+        //        type: "POST",
+        //        url: "/Admin/Writer/WriterDelete/" + $("#writerId").val(),
+        //        success: function (param) {
+        //            loadData();
+        //            alert("Yazar silme işlemi başarıyla gerçekleştirildi.")
+        //        }
+        //    });
+        //});
+
     </script>
 }
