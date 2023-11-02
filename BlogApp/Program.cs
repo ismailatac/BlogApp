@@ -1,3 +1,5 @@
+using DataAccess.Contexts;
+using Entities;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
@@ -13,6 +15,11 @@ namespace BlogApp
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+            builder.Services.AddIdentity<AppUser, AppRole>( x =>
+            {
+                x.Password.RequireDigit = false;
+            }).AddEntityFrameworkStores<Context>();
+            builder.Services.AddDbContext<Context>();
 
             builder.Services.AddMvc(config =>
             {
