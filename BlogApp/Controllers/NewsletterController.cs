@@ -23,7 +23,7 @@ namespace BlogApp.Controllers
             newsletter.Mail = newsletterModel.Mail;
             newsletter.MailStatus = newsletterModel.MailStatus;
             nm.Add(newsletter);
-            return RedirectToAction("BlogReadAll", "Blog", new { id = $"{newsletterModel.BlogId}" });
+            
         }
     }
 }

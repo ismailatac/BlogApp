@@ -37,6 +37,14 @@ namespace BlogApp
                 x.LoginPath = "/Login/Index";
             }
             );
+            builder.Services.ConfigureApplicationCookie(options =>
+            {
+                options.Cookie.HttpOnly = true;
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(100);
+
+                options.LoginPath = "/Login/Index/";
+                options.SlidingExpiration = true;
+            });
 
 
             var app = builder.Build();

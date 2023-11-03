@@ -12,7 +12,6 @@
     }*@
     <form method="post" asp-action="SubscribeMail" asp-controller="Newsletter">
         <input type="email" placeholder="Email" id="mail" name="Mail" required=""/>
-        <input type="hidden" name="BlogId" value=@ViewBag.i id="blogId" />
         <input type="submit" value="Abone Ol" id="submitNews"/>
     </form>
 
@@ -21,8 +20,7 @@
 
     $("#submitNews").click(function () {
         let values = {
-            Mail: $("#mail").val(),
-            BlogId: $("#blogId").val()
+            Mail: $("#mail").val()
         };
         $.ajax({
             type: "POST",
