@@ -29,5 +29,13 @@ namespace DataAccess.EntityFramework
                 return c.Messages.Include(x => x.Sender).Include(y => y.Receiver).Where(z => z.ReceiverId == receiverId).ToList();
             }
         }
+
+        public List<Message> GetSendboxListByWriterId(int senderId)
+        {
+            using (var c = new Context())
+            {
+                return c.Messages.Include(x => x.Sender).Include(y => y.Receiver).Where(z => z.SenderId == senderId).ToList();
+            }
+        }
     }
 }

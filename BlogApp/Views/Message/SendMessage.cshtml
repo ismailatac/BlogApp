@@ -1,0 +1,24 @@
+﻿@model Entities.Message
+@{
+    ViewData["Title"] = "SendMessage";
+    Layout = "~/Views/Shared/WriterLayout.cshtml";
+}
+
+<h1>Mesaj Gönder</h1>
+<br />
+@using (Html.BeginForm("SendMessage", "Message", FormMethod.Post))
+{
+    @Html.Label("Konu")
+    @Html.TextBoxFor(x => x.Subject, new {@class = "form-control"})
+    @Html.ValidationMessageFor(x => x.Subject)
+    <br />
+    @Html.Label("Alıcı")
+    @Html.DropDownListFor(x => x.ReceiverId,(List<SelectListItem>)ViewBag.Receivers,new{@class="form-control"})
+    <br />
+    @Html.Label("Mesajınız")
+    @Html.TextAreaFor(x => x.Details,10,3, new {@class = "form-control"})
+    @Html.ValidationMessageFor(x => x.Details)
+    <br />
+    <button type="submit" class="btn btn-info">Mesaı Gönder</button>
+}
+

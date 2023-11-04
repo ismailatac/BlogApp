@@ -11,5 +11,8 @@ namespace Business.Abstracts
     {
         List<Message> GetInboxListByWriterId(int receiverId);
         Message GetByIdWithSender(int messageId);
+
+        List<Message> GetSendboxListByWriterId(int senderId);
+        
     }
 }

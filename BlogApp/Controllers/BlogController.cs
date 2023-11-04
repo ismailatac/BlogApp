@@ -31,8 +31,8 @@ namespace BlogApp.Controllers
         public IActionResult GetBlogsByWriterId()
         {
             var context = new Context();
-            var usermail = User.Identity.Name;
-            var writerId = context.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
+            var username = User.Identity.Name;
+            var writerId = context.Writers.Where(x => x.Name == username).Select(y => y.WriterId).FirstOrDefault();
             var values = blogService.GetListWithCategoryByWriterId(writerId);
             return View(values);
         }

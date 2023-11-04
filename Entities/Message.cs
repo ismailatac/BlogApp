@@ -16,7 +16,7 @@ namespace Entities
         public string Subject { get; set; }
         public string Details { get; set; }
         public DateTime Date { get; set; }
-        public string Status { get; set; }
+        public bool Status { get; set; }
         public Writer Sender { get; set; }
         public Writer Receiver { get; set; }
     }
