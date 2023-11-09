@@ -56,7 +56,7 @@ namespace BlogApp.Controllers
             var usermail = c.Users.Where(x => x.UserName == username).Select(y => y.Email).FirstOrDefault();
             var writerId = c.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
             var values = mm.GetSendboxListByWriterId(writerId);
-            return View();
+            return View(values);
         }
     }
 }

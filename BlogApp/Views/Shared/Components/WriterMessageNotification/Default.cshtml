@@ -1,5 +1,6 @@
 ﻿@using Entities
 @model List<Message>
+@{var i = 0;}
 
 
 
@@ -17,9 +18,10 @@
             <h6 class="preview-subject ellipsis mb-1 font-weight-normal">@item.Sender.Name sana bir mesaj gönderdi.</h6>
             <p class="text-gray mb-0"> @item.Date.ToShortDateString() </p>
         </div>
-    </a>
+        </a>
+        i = i + 1;
     }
     <div class="dropdown-divider"></div>
     
-    <h6 class="p-3 mb-0 text-center">2 yeni mesaj</h6>
+    <h6 class="p-3 mb-0 text-center">@i yeni mesaj</h6>
 </div>

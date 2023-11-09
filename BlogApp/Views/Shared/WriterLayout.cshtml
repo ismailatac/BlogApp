@@ -1,5 +1,8 @@
-﻿
+﻿@using DataAccess.Contexts;
+
 @{
+    Context context = new Context();
+    var username = User.Identity.Name;
     Layout = null;
 }
 
@@ -9,7 +12,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Purple Admin</title>
+    <title>BlogApp</title>
     <!-- plugins:css -->
     <link rel="stylesheet" href="~/writer/assets/vendors/mdi/css/materialdesignicons.min.css">
     <link rel="stylesheet" href="~/writer/assets/vendors/css/vendor.bundle.base.css">
@@ -58,16 +61,16 @@
                                 <span class="availability-status online"></span>
                             </div>
                             <div class="nav-profile-text">
-                                <p class="mb-1 text-black">David Greymaax</p>
+                                <p class="mb-1 text-black">@username</p>
                             </div>
                         </a>
                         <div class="dropdown-menu navbar-dropdown" aria-labelledby="profileDropdown">
-                            <a class="dropdown-item" href="#">
-                                <i class="mdi mdi-cached mr-2 text-success"></i> Activity Log
+                            <a class="dropdown-item" href="/Writer/WriterEditProfile">
+                                <i class="mdi mdi-cached mr-2 text-success"></i>Profili Düzenle
                             </a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">
-                                <i class="mdi mdi-logout mr-2 text-primary"></i> Signout
+                            <a class="dropdown-item" href="">
+                                <i class="mdi mdi-logout mr-2 text-primary"></i> Çıkış Yap
                             </a>
                         </div>
                     </li>

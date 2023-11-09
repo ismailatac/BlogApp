@@ -11,7 +11,8 @@ namespace BlogApp.ViewComponents.Writer
         public IViewComponentResult Invoke()
         {
             var context = new Context();
-            var usermail = User.Identity.Name;
+            var username = User.Identity.Name;
+            var usermail = context.Users.Where(x => x.UserName == username).Select(y => y.Email).FirstOrDefault();
             var writerId = context.Writers.Where(x => x.Mail == usermail).Select(y => y.WriterId).FirstOrDefault();
             var values = mm.GetInboxListByWriterId(writerId);
             return View(values);
